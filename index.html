@@ -11,13 +11,14 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
 <script>
-for (var i = 0; i <1000000; i++) {
-
-
+for(var links=document.getElementsByTagName('a'), i=0;i<links.length;i++) {
+    links[i].setAttribute('target','_parent');
 }
-
+var x = "5";
+x+1;
 </script>
 </head>
 <body>test</body>
 
 </html>
+
