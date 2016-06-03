@@ -7,13 +7,12 @@ var btn = document.createElement("br");        // Create a <button> element
 var httpRequest = null;
 var gates = "open";
 var count = 0;
+httpRequest = new XMLHttpRequest(); 
+var url = "http://thecatapi.com/api/images/get?format=src&type=gif";
 var clicko = function() {
     if (gates === "open") {
         gates = "closed";
         count++;
-        document.getElementById("counter").innerHTML = "Cats Seen: " + count;
-        httpRequest = new XMLHttpRequest(); 
-        var url = "http://thecatapi.com/api/images/get?format=src&type=gif";
         httpRequest.open ("GET", url, true); 
         httpRequest.send (null);
         var para = document.createElement("p");
@@ -25,18 +24,18 @@ var clicko = function() {
         img.setAttribute("height", "400px");
             var timeout = function() {
         setTimeout(function(){ 
+            document.getElementById("counter").innerHTML = "Cats Seen: " + count;
             if (httpRequest.responseURL !== "") {
             img.src = httpRequest.responseURL;
             $("#imgs").prepend(btn);   
-            $("#imgs").prepend(para);   
-        
+            $("#imgs").prepend(para);
             $("#imgs").prepend(img); 
             $("#imgs").prepend(btn);   
             gates = "open";
             } else {
                 timeout();
             }
-        }, 500);
+        }, 100);
     }
         timeout();
 
