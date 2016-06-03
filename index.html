@@ -23,8 +23,9 @@ var clicko = function() {
         var img = document.createElement("img");
         img.setAttribute("width", "500px");
         img.setAttribute("height", "400px");
-
+            var timeout = function() {
         setTimeout(function(){ 
+            if (httpRequest.responseURL !== "") {
             img.src = httpRequest.responseURL;
             $("#imgs").prepend(btn);   
             $("#imgs").prepend(para);   
@@ -32,7 +33,13 @@ var clicko = function() {
             $("#imgs").prepend(img); 
             $("#imgs").prepend(btn);   
             gates = "open";
+            } else {
+                timeout();
+            }
         }, 500);
+    }
+        timeout();
+
     }
 }
 
