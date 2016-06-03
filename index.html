@@ -18,6 +18,8 @@ var clicko = function() {
         var t = document.createTextNode(date);    
         para.appendChild(t);
         var img = document.createElement("img");
+        img.width = "500px";
+        img.height = "400px";
         setTimeout(function(){ 
             img.src = httpRequest.responseURL;
             $("#imgs").prepend(btn);   
