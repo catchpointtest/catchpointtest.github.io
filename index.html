@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 var btn = document.createElement("br");        // Create a <button> element
+var httpRequest = null;
+var gates = "open";
 var clicko = function() {
-    var para = document.createElement("p");
-    var date = new Date();
-    var t = document.createTextNode(date);    
-    para.appendChild(t);
-   
-   var img = document.createElement("img");
-   img.src = "https://thecatapi.com/api/images/get?format=src&type=gif";
-   var img2 = document.createElement("img");
-   img2.src = "https://thecatapi.com/api/images/get?format=src&type=gif";
-    document.body.appendChild(btn);   
-    document.body.appendChild(para);
-    document.body.appendChild(btn);   
-    document.body.appendChild(img);   
-    document.body.appendChild(img2);
+    if (gates === "open") {
+        gates = "closed";
+        httpRequest = new XMLHttpRequest(); 
+        var url = "http://thecatapi.com/api/images/get?format=src&type=gif";
+        httpRequest.open ("GET", url, true); 
+        httpRequest.send (null);
+        var para = document.createElement("p");
+        var date = new Date();
+        var t = document.createTextNode(date);    
+        para.appendChild(t);
+        var img = document.createElement("img");
+        setTimeout(function(){ 
+            img.src = httpRequest.responseURL;
+            $("#imgs").prepend(btn);   
+            $("#imgs").prepend(para);   
+        
+            $("#imgs").prepend(img); 
+            $("#imgs").prepend(btn);   
+            gates = "open";
+        }, 500);
+    }
 }
 
 </script>
 </head>
 <body>
+
 <button onclick="clicko()" id="button">Click Here</button>
 
+<div id="imgs">
+</div>
 
 </body>
 
