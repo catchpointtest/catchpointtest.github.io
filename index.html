@@ -6,9 +6,12 @@
 var btn = document.createElement("br");        // Create a <button> element
 var httpRequest = null;
 var gates = "open";
+var count = 0;
 var clicko = function() {
     if (gates === "open") {
         gates = "closed";
+        count++;
+        document.getElementById("counter").innerHTML = "Cats Seen: " + count;
         httpRequest = new XMLHttpRequest(); 
         var url = "http://thecatapi.com/api/images/get?format=src&type=gif";
         httpRequest.open ("GET", url, true); 
@@ -20,7 +23,7 @@ var clicko = function() {
         var img = document.createElement("img");
         img.setAttribute("width", "500px");
         img.setAttribute("height", "400px");
-        
+
         setTimeout(function(){ 
             img.src = httpRequest.responseURL;
             $("#imgs").prepend(btn);   
@@ -38,6 +41,7 @@ var clicko = function() {
 <body>
 <center>
 <h1 id="title">CATchpoint</h1> 
+<h2 id="counter">Cats Seen: 0</h2>
 <button onclick="clicko()" id="button">Click Here</button>
 
 <div id="imgs">
