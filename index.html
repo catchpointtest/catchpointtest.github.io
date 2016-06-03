@@ -6,9 +6,14 @@
 var btn = document.createElement("br");        // Create a <button> element
 
 var onclick = function() {
+    var para = document.createElement("p");
     var date = new Date();
+    var t = document.createTextNode(date);    
+    para.appendChild(t);
+   
     document.body.appendChild(btn);   
-    document.body.appendChild(date);
+    document.body.appendChild(para);
+    document.body.appendChild(btn);   
 }
 
 </script>
