@@ -12,7 +12,6 @@ var url = "http://thecatapi.com/api/images/get?format=src&type=gif";
 var clicko = function() {
     if (gates === "open") {
         gates = "closed";
-        count++;
         httpRequest.open ("GET", url, true); 
         httpRequest.send (null);
         var para = document.createElement("p");
@@ -22,10 +21,11 @@ var clicko = function() {
         var img = document.createElement("img");
         img.setAttribute("width", "500px");
         img.setAttribute("height", "400px");
-            var timeout = function() {
-        setTimeout(function(){ 
+        var timeout = function() {
+            setTimeout(function(){ 
             document.getElementById("counter").innerHTML = "Cats Seen: " + count;
             if (httpRequest.responseURL !== "" && httpRequest.responseText.substr(0,3) === "GIF") {
+            count++;
             img.src = httpRequest.responseURL;
             $("#imgs").prepend(btn);   
             $("#imgs").prepend(para);
