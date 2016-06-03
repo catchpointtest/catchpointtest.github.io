@@ -23,9 +23,9 @@ var clicko = function() {
         img.setAttribute("height", "400px");
         var timeout = function() {
             setTimeout(function(){ 
-            document.getElementById("counter").innerHTML = "Cats Seen: " + count;
             if (httpRequest.responseURL !== "" && httpRequest.responseText.substr(0,3) === "GIF") {
             count++;
+            document.getElementById("counter").innerHTML = "Cats Seen: " + count;
             img.src = httpRequest.responseURL;
             $("#imgs").prepend(btn);   
             $("#imgs").prepend(para);
