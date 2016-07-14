@@ -3,7 +3,19 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
-
+var count = 0;
+var clicko = function() {
+    count+=250;
+        var d = new Date();
+        
+        var img = document.createElement("img");
+        img.setAttribute("width", "5000px");
+        img.setAttribute("height", "4000px");
+        img.setAttribute("style", "position:fixed;left="+ count + "px;");
+        img.src="http://thecatapi.com/api/images/get?format=src&type=gif&"+d.getTime();
+        $("#imgs").append(img); 
+        
+}
 </script>
 </head>
 <body>
