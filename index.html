@@ -7,7 +7,6 @@ var btn = document.createElement("br");        // Create a <button> element
 var httpRequest = null;
 var gates = "open";
 var count = 0;
-httpRequest = new XMLHttpRequest(); 
 
 var clicko = function() {
     var d = new Date();
@@ -16,8 +15,7 @@ var clicko = function() {
     if (gates === "open") {
         gates = "closed";
         var para = document.createElement("p");
-        httpRequest.open ("GET", url, true); 
-        httpRequest.send (null); 
+     
         var date = new Date();
         var t = document.createTextNode(date);    
         para.appendChild(t);
@@ -25,29 +23,20 @@ var clicko = function() {
         img.setAttribute("width", "5000px");
         img.setAttribute("height", "4000px");
         img.setAttribute("style", "position:absolute;left:0;top=50px;");
-        var timeout = function() {
-            setTimeout(function(){
-            if (httpRequest.responseURL !== "" && httpRequest.responseText.substr(0,3) === "GIF") {
-                count++;
+
+
+               count++;
                 document.getElementById("counter").innerHTML = "Cats Seen: " + count;
-                img.src = httpRequest.responseURL;
+                img.src = url;
                 $("#imgs").prepend(btn);   
                 $("#imgs").prepend(para);
                 $("#imgs").prepend(img); 
                 $("#imgs").prepend(btn);   
                 gates = "open";
-            } else if (httpRequest.responseURL !== "" && httpRequest.responseText.substr(0,3) !== "GIF") {
-                httpRequest.open ("GET", url, true); 
-                httpRequest.send (null); 
-                timeout();
-            } else {
-                timeout();
-            }
-        }, 100);
-    }
-        timeout();
-    }
-}
+           
+ 
+
+}}
 </script>
 </head>
 <body>
