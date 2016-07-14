@@ -1,10 +1,138 @@
+<html><head>
+<title>multitwitch</title>
+<link rel="stylesheet" type="text/css" href="/static/css/multitwitch.css">
+<link rel="icon" href="/favicon.ico">
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="/static/js/jquery-ui/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/jquery-ui.css">
+<script type="text/javascript" src="/static/js/mustache.js"></script>
+<script type="text/javascript" src="/static/js/multitwitch.js"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36803885-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    absolute_center($("#helpbox"));
+    if (2 == 0) {
+        hide_chat();
+        $("#helpbox").css('display','block');
+    }
+
+    
+    streams.push("reynad27");
+    
+    streams.push("meteos");
+    
+
+    // Setup tabs
+    chat_tabs = $("#chatbox").tabs();
+
+    // Do this after all the jqueryui setup.
+    optimize_size(2);
+    setTimeout(function(){
+        optimize_size(2)
+        }, 500);
+});
+$(window).resize(function() {
+    absolute_center($("#helpbox"));
+    optimize_size(-1);
+});
+</script>
+</head>
+<body>
+<div id="wrapper">
 <div id="streams" style="width: 804px; padding-top: 4px;">
     
     
     
-    <iframe width="1000" height="700" src="http://player.twitch.tv/?channel=monstercat&!muted&quality=chunked" allowfullscreen></iframe>
-    <iframe width="1000" height="700" src="http://player.twitch.tv/?channel=reynad&!muted&quality=chunked" allowfullscreen></iframe>
-    <iframe width="1000" height="700" src="http://player.twitch.tv/?channel=nl_kripp&!muted&quality=chunked" allowfullscreen></iframe>
-    <iframe width="1000" height="700" src="http://player.twitch.tv/?channel=link&!muted&quality=chunked" allowfullscreen></iframe>
-    <iframe width="1000" height="700" src="http://player.twitch.tv/?channel=meteos&!muted&quality=chunked" allowfullscreen></iframe>
+    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_reynad27" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=reynad27" bgcolor="#000000" style="height: 457px; width: 759px;"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"><param name="flashvars" value="hostname=www.twitch.tv&amp;channel=reynad27&amp;auto_play=true&amp;start_volume=0"><param name="wmode" value="opaque"></object>
+    
+        <object type="application/x-shockwave-flash" height="255" width="400" id="embed_reynad27" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=reynad27" bgcolor="#000000" style="height: 457px; width: 759px;"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"><param name="flashvars" value="hostname=www.twitch.tv&amp;channel=imaqtpie&amp;auto_play=true&amp;start_volume=0"><param name="wmode" value="opaque"></object>
+    
+    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_reynad27" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=link" bgcolor="#000000" style="height: 457px; width: 759px;"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"><param name="flashvars" value="hostname=www.twitch.tv&amp;channel=GarenaTW&amp;auto_play=true&amp;start_volume=0"><param name="wmode" value="opaque"></object>
+    
+    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_reynad27" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=wingsofdeath" bgcolor="#000000" style="height: 457px; width: 759px;"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"><param name="flashvars" value="hostname=www.twitch.tv&amp;channel=IWillDominate&amp;auto_play=true&amp;start_volume=0"><param name="wmode" value="opaque"></object>
+
+    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_meteos" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=meteos" bgcolor="#000000" style="height: 457px; width: 759px;"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"><param name="flashvars" value="hostname=www.twitch.tv&amp;channel=asiagodtonegg3be0&amp;auto_play=true&amp;start_volume=0"><param name="wmode" value="opaque"></object>
+    
+    
+    
 </div>
+
+<div id="chatbox" class="ui-tabs ui-widget ui-widget-content ui-corner-all" style="width: 304px;">
+<ul id="tablist" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+
+<li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="chat-reynad27" aria-labelledby="ui-id-1" aria-selected="true"><a href="#chat-reynad27" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">reynad27</a></li>
+
+<li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="chat-meteos" aria-labelledby="ui-id-2" aria-selected="false"><a href="#chat-meteos" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">meteos</a></li>
+
+</ul>
+
+<div id="chat-reynad27" class="stream_chat ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 871.86px;">
+<iframe frameborder="0" scrolling="no" id="chat-reynad27-embed" src="http://twitch.tv/chat/embed?channel=reynad27&amp;popout_chat=true" height="100%" width="100%"></iframe>
+</div>
+
+<div id="chat-meteos" class="stream_chat ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none; height: 871.86px;">
+<iframe frameborder="0" scrolling="no" id="chat-meteos-embed" src="http://twitch.tv/chat/embed?channel=meteos&amp;popout_chat=true" height="100%" width="100%"></iframe>
+</div>
+
+</div>
+
+
+<div id="helpbox" style="position: absolute; left: 264.5px; top: 388.5px; display: none;">
+<h1>MultiTwitch.tv</h1>
+<div id="helptext">
+Welcome to MultiTwitch! You can use this site to watch any number of <a href="http://twitch.tv/">twitch.tv</a> streams at the same time (as long as your computer can handle it). Simply put the streams you want in the url. For example: <a href="http://multitwitch.tv/siglemic/cosmowright">multitwitch.tv/siglemic/cosmowright</a>. MultiTwitch will optimize the layout of streams to give you the maximum size on each of the streams, while maintaining aspect ratio. For the curious, the source of this page is available at <a href="https://github.com/bhamrick/multitwitch">github.com/bhamrick/multitwitch</a>. Happy streamwatching!
+</div>
+
+<div id="credits">
+Created by Brian Hamrick
+</div>
+</div>
+
+<div id="change_streams" class="optionbox">
+    <div id="streamlist">
+    
+    <div class="streamlist_item">
+    <input type="checkbox" checked="true" class="check">
+    <span>reynad27</span>
+    </div>
+    
+    <div class="streamlist_item">
+    <input type="checkbox" checked="true" class="check">
+    <span>meteos</span>
+    </div>
+    
+    <div class="streamlist_item">
+    <input type="text" class="stream_name" onkeyup="stream_item_keyup(event)">
+    </div>
+    </div>
+
+    <div class="fullwidth centering">
+        <a onclick="add_stream_item()">Add Stream</a>
+    </div>
+
+    <div class="fullwidth">
+    <button type="button" class="left" onclick="close_change_streams(false)">Cancel</button>
+    <button type="button" class="right" onclick="close_change_streams(true)">Ok</button>
+    <div class="clear"></div>
+    </div>
+</div>
+
+<div id="bottom_right_bar">
+<a onclick="change_streams()">Change Streams</a>
+|
+<a onclick="toggle_chat()">Toggle Chat</a>
+</div>
+
+</div>
+
+</body></html>
