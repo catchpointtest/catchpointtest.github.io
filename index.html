@@ -52,9 +52,9 @@ var clicko = function() {
 
     }
     if (count%10 === 0) {
-        for (var i = 0; i < document.getElementsByClassName('delete').length; i++){
-            document.getElementsByClassName('delete')[i].remove();
-        }
+        for (var i = document.getElementsByTagName('img').length-1; i >= 0 ; i--){
+            document.getElementsByTagName('img')[i].remove();
+         }
         
     }
     
