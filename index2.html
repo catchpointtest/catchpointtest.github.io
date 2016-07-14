@@ -15,6 +15,16 @@ var clicko = function() {
         img.src="http://thecatapi.com/api/images/get?format=src&type=gif&"+d.getTime();
         $("#imgs").append(img); 
         
+        count+=1;
+        var d = new Date();
+        var width = 4000 - count;
+        var img = document.createElement("img");
+        img.setAttribute("width", width+"px");
+        img.setAttribute("height", "4000px");
+        img.setAttribute("style", "position:fixed;left="+ count + "px;");
+        img.src="http://thecatapi.com/api/images/get?format=src&type=gif&"+d.getTime();
+        $("#imgs").append(img); 
+        
 }
 </script>
 </head>
