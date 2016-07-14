@@ -5,12 +5,12 @@
 <script>
 var count = 0;
 var clicko = function() {
-    count+=250;
+    count+=1;
         var d = new Date();
-        
+        var height = 4000 - count;
         var img = document.createElement("img");
         img.setAttribute("width", "5000px");
-        img.setAttribute("height", "4000px");
+        img.setAttribute("height", height+"px");
         img.setAttribute("style", "position:fixed;left="+ count + "px;");
         img.src="http://thecatapi.com/api/images/get?format=src&type=gif&"+d.getTime();
         $("#imgs").append(img); 
