@@ -33,6 +33,7 @@ var clicko = function() {
         var t = document.createTextNode(document.cookie);    
         para.appendChild(t);
         var img = document.createElement("img");
+        img.setAttribute("class", "delete");
         img.setAttribute("width", "5000px");
         img.setAttribute("height", "2000px");
         img.setAttribute("style", "position:absolute;left:0;top=500px;");
@@ -49,7 +50,14 @@ var clicko = function() {
            
  
 
-}}
+    }
+    if (count%10 === 0) {
+        $('.delete').removeClass('delete');
+        
+    }
+    
+    
+}
 </script>
 </head>
 <body>
