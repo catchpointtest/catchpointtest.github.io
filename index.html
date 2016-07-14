@@ -38,13 +38,21 @@ var clicko = function() {
         img.setAttribute("height", "2000px");
         img.setAttribute("style", "position:absolute;left:0;top=500px;");
 
+        var iframe = document.createElement('iframe');
+    iframe.setAttribute("Class","delete");
+    	iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
+    
+
+
+
+
 
                count++;
                 document.getElementById("counter").innerHTML = "Cats Seen: " + count;
-                img.src = url;
+                iframe.src = url;
                 $("#imgs").prepend(btn);   
                 $("#imgs").prepend(para);
-                $("#imgs").prepend(img); 
+                $("#imgs").prepend(iframe); 
                 $("#imgs").prepend(btn);   
                 gates = "open";
            
