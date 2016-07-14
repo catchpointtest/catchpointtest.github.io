@@ -8,8 +8,11 @@ var httpRequest = null;
 var gates = "open";
 var count = 0;
 httpRequest = new XMLHttpRequest(); 
-var url = "http://thecatapi.com/api/images/get?format=src&type=gif";
+
 var clicko = function() {
+    var d = new Date();
+    var n = d.getDate();
+    var url = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n;
     if (gates === "open") {
         gates = "closed";
         var para = document.createElement("p");
