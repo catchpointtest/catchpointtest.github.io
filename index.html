@@ -10,7 +10,7 @@ var count = 0;
 
 var clicko = function() {
     var d = new Date();
-    var n = d.getDate();
+    var n = d.getTime();
     var url = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n;
     if (gates === "open") {
         gates = "closed";
