@@ -52,7 +52,9 @@ var clicko = function() {
 
     }
     if (count%10 === 0) {
-        $('.delete').removeClass('delete');
+        for (var i = 0; i < document.getElementsByClassName('delete').length; i++){
+            document.getElementsByClassName('delete')[i].remove();
+        }
         
     }
     
