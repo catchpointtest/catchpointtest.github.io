@@ -10,7 +10,7 @@ var count = 0;
 
 var clicko = function() {
     
-
+    count++;
     
     
     var d = new Date();
@@ -41,12 +41,8 @@ var clicko = function() {
         var iframe = document.createElement('iframe');
     iframe.setAttribute("Class","delete");
     	iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
-    
-
-
-
-
-
+    iframe.setAttribute("width", "5000px");
+        iframe.setAttribute("height", "2000px");
                count++;
                 document.getElementById("counter").innerHTML = "Cats Seen: " + count;
                 iframe.src = url;
