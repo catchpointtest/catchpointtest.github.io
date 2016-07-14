@@ -19,7 +19,7 @@ var clicko = function() {
     var iframe = document.createElement('iframe');
 
     iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
-    var cookiestring = "cookie" + n + "="+n;
+    var cookiestring = "JScookie" + n + "="+n;
     var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';";
     iframe.setAttribute("onload", cookiecall);
     $("#imgs").prepend(iframe);
