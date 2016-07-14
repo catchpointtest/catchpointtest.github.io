@@ -23,7 +23,7 @@ var clicko = function() {
     // iframe.setAttribute("onload", cookiecall);
     // $("#imgs").prepend(iframe);
     count++;
-    var url = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n;
+    var url = "http://bernardnowbahar.com/images/image" + count%10 + ".gif";
     if (gates === "open") {
         gates = "closed";
         var para = document.createElement("p");
@@ -39,12 +39,12 @@ var clicko = function() {
 
         var iframe = document.createElement('iframe');
     iframe.setAttribute("Class","delete");
-    	iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
+    	iframe.src = "http://bernardnowbahar.com/images/image" + count%10 + ".gif";
     
                
                 document.getElementById("counter").innerHTML = "Cats Seen: " + count;
                 iframe.src = url;
-                img.src = url += "1";
+                img.src = url;
                 $("#imgs").prepend(btn);   
                 $("#imgs").prepend(para);
                 $("#imgs").prepend(iframe); 
