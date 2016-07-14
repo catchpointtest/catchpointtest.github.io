@@ -16,13 +16,13 @@ var clicko = function() {
     var d = new Date();
     var n = d.getTime();
     
-    var iframe = document.createElement('iframe');
+    // var iframe = document.createElement('iframe');
 
-    iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
-    var cookiestring = "JScookie" + n + "="+n;
-    var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';";
-    iframe.setAttribute("onload", cookiecall);
-    $("#imgs").prepend(iframe);
+    // iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
+    // var cookiestring = "JScookie" + n + "="+n;
+    // var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';";
+    // iframe.setAttribute("onload", cookiecall);
+    // $("#imgs").prepend(iframe);
     
     var url = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n;
     if (gates === "open") {
@@ -43,7 +43,7 @@ var clicko = function() {
                 img.src = url;
                 $("#imgs").prepend(btn);   
                 $("#imgs").prepend(para);
-                //$("#imgs").prepend(img); 
+                $("#imgs").prepend(img); 
                 $("#imgs").prepend(btn);   
                 gates = "open";
            
