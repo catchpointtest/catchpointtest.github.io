@@ -22,7 +22,7 @@ var clicko = function() {
     // var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';";
     // iframe.setAttribute("onload", cookiecall);
     // $("#imgs").prepend(iframe);
-    
+    count++;
     var url = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n;
     if (gates === "open") {
         gates = "closed";
@@ -41,7 +41,7 @@ var clicko = function() {
     iframe.setAttribute("Class","delete");
     	iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
     
-               count++;
+               
                 document.getElementById("counter").innerHTML = "Cats Seen: " + count;
                 iframe.src = url;
                 $("#imgs").prepend(btn);   
@@ -54,7 +54,7 @@ var clicko = function() {
 
     }
     if (count%10 === 0) {
-        for (var i = document.getElementsByTagName('img').length-1; i >= 0 ; i--){
+        for (var i = document.getElementsByTagName('iframe').length-1; i >= 0 ; i--){
             $('.delete').remove();
          }
         
