@@ -8,6 +8,8 @@
 	var count = 0;
 
 	var clicko = function() {
+		if (gates === 'open') {
+			gates = 'closed';
 	var d = new Date();
 	var n = d.getTime();
 
@@ -38,6 +40,8 @@
 	//$("#imgs").prepend(img);
 	$("#imgs").prepend(btn);
 	counter++;
+	gates = 'open';
+	}
 	}
     </script>
   </head>
