@@ -1,23 +1,20 @@
 <html lang="en"><head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script>
-      var btn = document.createElement("br");     
+      var btn = document.createElement("br");    
+      var counter = 0; 
 	var httpRequest = null;
 	var gates = "open";
 	var count = 0;
 
 	var clicko = function() {
-
-
-
-
 	var d = new Date();
 	var n = d.getTime();
 
 	var iframe = document.createElement('iframe');
 
 	iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
-	var cookiestring = "JScookie" + n + "="+n;
+	var cookiestring = "JScookie" + counter + "="+counter;
 	var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';";
 	iframe.setAttribute("onload", cookiecall);
 	$("#imgs").prepend(iframe);
