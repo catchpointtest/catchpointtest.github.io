@@ -1,88 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script>
-var btn = document.createElement("br");        // Create a <button> element
-var httpRequest = null;
-var gates = "open";
-var count = 0;
+<html lang="en"><head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+      var btn = document.createElement("br");     
+	var httpRequest = null;
+	var gates = "open";
+	var count = 0;
 
-var clicko = function() {
-    
-    
-    
-    var d = new Date();
-    var n = d.getTime();
-    
-    // var iframe = document.createElement('iframe');
+	var clicko = function() {
 
-    // iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
-    // var cookiestring = "JScookie" + n + "="+n;
-    // var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';";
-    // iframe.setAttribute("onload", cookiecall);
-    // $("#imgs").prepend(iframe);
-    count++;
-    var url = "http://bernardnowbahar.com/images/image" + count%10 + ".gif";
-    if (gates === "open") {
-        gates = "closed";
-        var para = document.createElement("p");
-     
-        var date = new Date();
-        var t = document.createTextNode(document.cookie);    
-        para.appendChild(t);
-        var img = document.createElement("img");
-        img.setAttribute("class", "delete");
-        img.setAttribute("width", "5000px");
-        img.setAttribute("height", "2000px");
-        img.setAttribute("style", "position:absolute;left:0;top=500px;");
 
-        var iframe = document.createElement('iframe');
-    iframe.setAttribute("Class","delete");
-    	iframe.src = "http://bernardnowbahar.com/images/image" + count%10 + ".gif";
-    
-               
-                document.getElementById("counter").innerHTML = "Cats Seen: " + count;
-                iframe.src = url;
-                img.src = url;
-                $("#imgs").prepend(btn);   
-                $("#imgs").prepend(para);
-                $("#imgs").prepend(iframe); 
-                $("#imgs").prepend(img); 
-                $("#imgs").prepend(btn);   
-                gates = "open";
-           
- 
 
-    }
-    if (count%10 === 0) {
-       
-            $('.delete').remove();
-        
-        
-    }
-    
-    
-}
-</script>
-</head>
-<body>
-<center>
-<h1 id="title">CATch.</h1> 
-<h2 id="counter">Cats Seen: 0</h2>
-<button onclick="clicko()" id="button">Click Here</button>
 
-<div id="imgs">
-</center>
-</div>
-    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_reynad27" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=reynad27" bgcolor="#000000" style="height: 457px; width: 759px;"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"><param name="flashvars" value="hostname=www.twitch.tv&amp;channel=streamerhouse&amp;auto_play=true&amp;start_volume=0"><param name="wmode" value="opaque"></object>
-    
-        <object type="application/x-shockwave-flash" height="255" width="400" id="embed_reynad27" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=reynad27" bgcolor="#000000" style="height: 457px; width: 759px;"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"><param name="flashvars" value="hostname=www.twitch.tv&amp;channel=Monstercat&amp;auto_play=true&amp;start_volume=0"><param name="wmode" value="opaque"></object>
-    
-    <object type="application/x-shockwave-flash" height="255" width="400" id="embed_reynad27" class="stream" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=link" bgcolor="#000000" style="height: 457px; width: 759px;"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf"><param name="flashvars" value="hostname=www.twitch.tv&amp;channel=EULCS1&amp;auto_play=true&amp;start_volume=0"><param name="wmode" value="opaque"></object>
-    
-  
-    
-</body>
+	var d = new Date();
+	var n = d.getTime();
 
-</html>
+	var iframe = document.createElement('iframe');
+
+	iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
+	var cookiestring = "JScookie" + n + "="+n;
+	var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';";
+	iframe.setAttribute("onload", cookiecall);
+	$("#imgs").prepend(iframe);
+
+	var url = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n;
+	var para = document.createElement("p");
+
+	var date = new Date();
+	var t = document.createTextNode(document.cookie);
+	para.appendChild(t);
+	var img = document.createElement("img");
+	img.setAttribute("width", "500px");
+	img.setAttribute("height", "400px");
+	img.setAttribute("style", "position:absolute;left:0;top=500px;");
+
+	count++;
+	document.getElementById("counter").innerHTML = "Cats Seen: " + count;
+	img.src = url;
+	$("#imgs").prepend(btn);
+	$("#imgs").prepend(para);
+	//$("#imgs").prepend(img);
+	$("#imgs").prepend(btn);
+
+	}
+    </script>
+  </head>
+  <body>
+    <center>
+      <h1 id="title">CATch.</h1>
+      <h2 id="counter">Cats Seen: 0</h2>
+      <a href="/bernard.html" id="bernard">Go to Bernard page</a><br>
+      <button onclick="clicko()" id="button">Click Here</button>
+
+      <div id="imgs">
+    </div></center>
+    
+</body></html>
