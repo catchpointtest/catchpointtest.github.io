@@ -17,7 +17,7 @@
 
 	iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
 	var cookiestring = "JScookie" + counter + "="+counter;
-	var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';$('#imgs', window.parent.document).prepend("teeeeeest");"
+	var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/'; var para = document.createElement('p'); var t = document.createTextNode(window.parent.document.cookie); para.appendChild(t); $('#imgs', window.parent.document).prepend(para);"
 	iframe.setAttribute("onload", cookiecall);
 	$("#imgs").prepend(iframe);
 
