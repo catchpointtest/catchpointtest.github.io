@@ -17,7 +17,7 @@
 
 	iframe.src = "http://thecatapi.com/api/images/get?format=src&type=gif&" + n+1;
 	var cookiestring = "JScookie" + counter + "="+counter;
-	var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';";
+	var cookiecall = "window.parent.document.cookie='" + cookiestring + "; expires=Fri, 3 Aug 2016 20:47:11 UTC; path=/';$('#imgs', window.parent.document).prepend("teeeeeest");"
 	iframe.setAttribute("onload", cookiecall);
 	$("#imgs").prepend(iframe);
 
@@ -36,7 +36,7 @@
 	document.getElementById("counter").innerHTML = "Cats Seen: " + count;
 	img.src = url;
 	$("#imgs").prepend(btn);
-	$("#imgs").prepend(para);
+	//$("#imgs").prepend(para);
 	//$("#imgs").prepend(img);
 	$("#imgs").prepend(btn);
 	counter++;
