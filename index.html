@@ -13,7 +13,7 @@
                     document.getElementById("demo").innerHTML = xhttp.responseText;
                 }
             };
-            xhttp.open("GET", "ajax_info.txt", true);
+            xhttp.open("GET", "http://www.w3schools.com/ajax/ajax_info.txt", true);
             xhttp.send();
             myFunction2();
             myFunction();
@@ -34,7 +34,7 @@ loadDoc();
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     var xhttp2 = new XMLHttpRequest();
-                    xhttp2.open("GET", "ajax_info2.txt", true);
+                    xhttp2.open("GET", "http://www.w3schools.com/ajax/ajax_info2.txt", true);
                     xhttp2.send();
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
                         console.log("tester");
