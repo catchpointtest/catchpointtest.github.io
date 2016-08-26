@@ -34,12 +34,14 @@ loadDoc();
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     var xhttp2 = new XMLHttpRequest();
-                    xhttp2.open("GET", "http://cattesting.github.io/index2.html", true);
-                    xhttp2.send();
+                    
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
                         console.log("tester");
                         document.getElementById("demo").innerHTML = "fuuu";
+                        
                     }
+                    xhttp2.open("GET", "http://cattesting.github.io/index2.html", true);
+                    xhttp2.send();
                 };
                 xhttp.open("GET", "http://cattesting.github.io/index2.html", true);
                 xhttp.send();
