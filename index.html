@@ -1,53 +1,11 @@
 <!DOCTYPE html>
 <html>
-
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
 <body>
     <div id="demo">
         <h2>Let AJAX change this text</h2></div> <button type="button" onclick="loadDoc()">Change Content</button>
    
 </body>
- <script>
-    
-        function loadDoc() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    document.getElementById("demo").innerHTML = xhttp.responseText;
-                }
-            };
-            xhttp.open("GET", "http://www.w3schools.com/ajax/ajax_info.txt", true);
-            xhttp.send();
-            myFunction2();
-            myFunction();
-        }
-loadDoc();
-        function myFunction() {
-            var p = new Date();
-            var z = p.getTime();
-            setInterval(function() {
-                var d = new Date();
-                var t = d.getTime();
-                document.getElementById("demo").innerHTML = t - z;
-            }, 1);
-        }
 
-        function myFunction2() {
-            setInterval(function() {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    var xhttp2 = new XMLHttpRequest();
-                    
-                    if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        console.log("tester");
-                        document.getElementById("demo").innerHTML = "fuuu";
-                        document.location.href='http://www.chase.com/'
-                    }
-                    xhttp2.open("GET", "http://cattesting.github.io/index2.html", true);
-                    xhttp2.send();
-                };
-                xhttp.open("GET", "http://cattesting.github.io/index2.html", true);
-                xhttp.send();
-            }, 3500);
-        }
-    </script>
 </html>
