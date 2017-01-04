@@ -1,11 +1,92 @@
 <!DOCTYPE html>
-<html>
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="http://code.jquery.com/jquery.js"></script>
+<html lang="en">
+<head>
+  <title>Insights</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
 <body>
-    <div id="demo">
-        <h2>Let AJAX change this text</h2></div> <button type="button" onclick="loadDoc()">Change Content</button>
-   
-</body>
+<center>
+	<div ng-app="myApp" ng-controller="myCtrl"> 
+		<h1>{{myWelcome}}</h1>
+	</div>
+<div class="container" style="display: table-row; border-spacing:2em;">
+  <h2>Insights</h2>
+  <div class="panel-group" >
+    <div class="panel panel-primary" style="display: table-cell;">
+      <div class="panel-heading">Panel with panel-default class</div>
+      <div class="panel-body">
+    	<div class="panel panel-success">
+      	<div class="panel-heading">Panel with panel-success class</div>
+      	<div class="panel-body">Panel Content</div>
+    	</div>
+      </div>
+    </div>
 
+    <div class="panel panel-primary" style="display: table-cell;">
+      <div class="panel-heading">Panel with panel-primary class</div>
+      <div class="panel-body">
+    	<div class="panel panel-success">
+      	<div class="panel-heading">Panel with panel-success class</div>
+      	<div class="panel-body">Panel Content</div>
+    	</div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary" style="display: table-cell;">
+      <div class="panel-heading">Panel with panel-success class</div>
+      <div class="panel-body">
+    	<div class="panel panel-success">
+      	<div class="panel-heading">Panel with panel-success class</div>
+      	<div class="panel-body">Panel Content</div>
+      	</div>
+      	</div>
+    </div>
+    <div class="panel panel-primary" style="display: table-cell;">
+      <div class="panel-heading">Panel with panel-info class</div>
+      <div class="panel-body">
+    	<div class="panel panel-success">
+      	<div class="panel-heading">Panel with panel-success class</div>
+      	<div class="panel-body">Panel Content</div>
+      	</div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary" style="display: table-cell;">
+      <div class="panel-heading">Panel with panel-warning class</div>
+      <div class="panel-body">
+    	<div class="panel panel-success">
+      	<div class="panel-heading">Panel with panel-success class</div>
+      	<div class="panel-body">Panel Content</div>
+      </div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary" style="display: table-cell;">
+      <div class="panel-heading">Panel with panel-danger class</div>
+      <div class="panel-body">
+    	<div class="panel panel-success">
+      	<div class="panel-heading">Panel with panel-success class</div>
+      	<div class="panel-body">Panel Content</div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.get("https://code.jquery.com/jquery-1.10.2.js")
+  .then(function(response) {
+      $scope.myWelcome = response.data.substring(0,100);
+  });
+});
+</script>
+</body>
 </html>
