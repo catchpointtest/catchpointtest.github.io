@@ -1,114 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
+
 <body>
-<center>
-	<div ng-app="myApp" ng-controller="myCtrl"> 
-		<h1>{{myWelcome}}</h1>
+    <center>
+        <div ng-app="myApp" ng-controller="myCtrl">
+            <div class="container" style="display: table-row; border-spacing:2em;">
+                <h2>Insights</h2>
+                <div class="panel-group">
+                    <div ng-repeat="n in myWelcome" style="display: table-cell;">
+                        <div class="panel panel-primary" style="border-spacing:5px;">
+                            <div class="panel-heading">{{n.name}}</div>
+                            <div class="panel-body" style="padding: 5px;">
+                                <div ng-repeat="o in n.schedulers" style="padding: 5px;">
+                                    <div class="panel panel-success">
 
-	<div ng-repeat="n in myWelcome">
-	  do something
-	</div>
+                                        <div class="panel-heading" data-toggle="tooltip" data-placement="top" title="Hooray!">{{o.name}}</div>
+                                        <div class="panel-body">
+                                            <table style="border:none;border-collapse: separate; border-spacing: 10px 0;">
+                                                <tr>
+                                                    <th>IP</th>
+                                                    <td>{{o.ip}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Geography</th>
+                                                    <td>{{o.geography}}</td>
+                                                </tr>
+                                                <tr ng-repeat="p in o.figures">
+                                                    <th>{{p.name}}</th>
+                                                    <td>{{p.current}}</td>
+                                                    <td>{{p.previous}}</td>
+                                                </tr>
+                                            </table>
 
-	</div>
-<div class="container" style="display: table-row; border-spacing:2em;">
-  <h2>Insights</h2>
-  <div class="panel-group" >
-    <div class="panel panel-primary" style="display: table-cell;">
-      <div class="panel-heading">Panel with panel-default class</div>
-      <div class="panel-body">
-    	<div class="panel panel-success">
-      	<div class="panel-heading" data-toggle="tooltip" data-placement="top" title="Hooray!">Panel with panel-success class</div>
-      	<div class="panel-body">Panel Content</div>
-    	</div>
-      </div>
-    </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-    <div class="panel panel-primary" style="display: table-cell;">
-      <div class="panel-heading">Panel with panel-primary class</div>
-      <div class="panel-body">
-    	<div class="panel panel-success">
-      	<div class="panel-heading">Panel with panel-success class</div>
-      	<div class="panel-body">Panel Content</div>
-    	</div>
-      </div>
-    </div>
+                            </div>
+                        </div>
 
-    <div class="panel panel-primary" style="display: table-cell;">
-      <div class="panel-heading">Panel with panel-success class</div>
-      <div class="panel-body">
-    	<div class="panel panel-danger">
-      	<div class="panel-heading">Panel with panel-success class</div>
-      	<div class="panel-body">Panel Content</div>
-      	</div>
-      	</div>
-    </div>
-    <div class="panel panel-primary" style="display: table-cell;">
-      <div class="panel-heading">Panel with panel-info class</div>
-      <div class="panel-body">
-    	<div class="panel panel-success">
-      	<div class="panel-heading">Panel with panel-success class</div>
-      	<div class="panel-body">Panel Content</div>
-      	</div>
-      </div>
-    </div>
 
-    <div class="panel panel-primary" style="display: table-cell;">
-      <div class="panel-heading">Panel with panel-warning class</div>
-      <div class="panel-body">
-    	<div class="panel panel-success">
-      	<div class="panel-heading">Panel with panel-success class</div>
-      	<div class="panel-body">Panel Content</div>
-      </div>
-      </div>
-    </div>
 
-    <div class="panel panel-primary" style="display: table-cell;">
-      <div class="panel-heading">Panel with panel-danger class</div>
-      <div class="panel-body">
-    	<div class="panel panel-success">
-      	<div class="panel-heading">Panel with panel-success class</div>
-      	<div class="panel-body">Panel Content</div>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-</center>
 
-<script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $http) {
-  $http.get("https://code.jquery.com/jquery-1.10.2.js")
-  .then(function(response) {
-      var values = [
-    {
-        "name":"Thomas",
-        "password":"thomas"
-    },
-    { 
-        "name":"linda",
-        "password":"linda"
-    }];
 
-      $scope.myWelcome = values;
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      //response.data.substring(0,100);
-  });
-});
-</script>
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
-</script>
+    </center>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope, $http) {
+            var values = [{
+                "name": "USA East QA",
+                "location": "Las Vagas - Level 3 QA[1]",
+                "active": true,
+                "schedulers": [{
+                    "name": "NJ-NEW-QA-CO-03",
+                    "ip": "123.123.123.123",
+                    "geography": "Newark, NJ",
+                    "figures": [{
+                        "name": "CPU %",
+                        "current": "91",
+                        "previous": "92"
+                    }, {
+                        "name": "Mem MB",
+                        "current": "502",
+                        "previous": "497"
+                    }, {
+                        "name": "C: Space GB",
+                        "current": "53",
+                        "previous": "52"
+                    }, {
+                        "name": "D: Space GB",
+                        "current": "105",
+                        "previous": "101"
+                    }]
+                }, {
+                    "name": "BI-MA-QA-ZA-3",
+                    "ip": "124.124.124.124",
+                    "geography": "Boston, MA",
+                    "figures": [{
+                        "name": "CPU %",
+                        "current": "41",
+                        "previous": "32"
+                    }, {
+                        "name": "Mem MB",
+                        "current": "1502",
+                        "previous": "1497"
+                    }, {
+                        "name": "C: Space GB",
+                        "current": "43",
+                        "previous": "42"
+                    }, {
+                        "name": "D: Space GB",
+                        "current": "145",
+                        "previous": "141"
+                    }]
+                }]
+            }, {
+                "name": "USA West QA",
+                "location": "Los Angeles NTT QA[26]",
+                "active": true,
+                "schedulers": [{
+                    "name": "CO-ENG-QA-AB-01",
+                    "ip": "125.125.125.125",
+                    "geography": "Newark, NJ",
+                    "figures": [{
+                        "name": "CPU %",
+                        "current": "91",
+                        "previous": "92"
+                    }, {
+                        "name": "Mem MB",
+                        "current": "502",
+                        "previous": "497"
+                    }, {
+                        "name": "C: Space GB",
+                        "current": "53",
+                        "previous": "52"
+                    }, {
+                        "name": "D: Space GB",
+                        "current": "105",
+                        "previous": "101"
+                    }]
+                }, {
+                    "name": "BI-MA-QA-ZA-3",
+                    "ip": "126.126.126.126",
+                    "geography": "Boston, MA",
+                    "figures": [{
+                        "name": "CPU %",
+                        "current": "31",
+                        "previous": "22"
+                    }, {
+                        "name": "Mem MB",
+                        "current": "1102",
+                        "previous": "1397"
+                    }, {
+                        "name": "C: Space GB",
+                        "current": "78",
+                        "previous": "82"
+                    }, {
+                        "name": "D: Space GB",
+                        "current": "1495",
+                        "previous": "1491"
+                    }]
+                }]
+            }];
+            $scope.myWelcome = values;
+            $http.get("http://192.168.1.188:1337/users")
+                .then(function(response) {
+                    var values = [{
+                        "name": "USA East QA",
+                        "location": "Las Vagas - Level 3 QA[1]",
+                        "active": true,
+                        "schedulers": [{
+                            "name": "NJ-NEW-QA-CO-03",
+                            "ip": "123.123.123.123",
+                            "geography": "Newark, NJ",
+                            "figures": [{
+                                "name": "CPU %",
+                                "current": "91",
+                                "previous": "92"
+                            }, {
+                                "name": "Mem MB",
+                                "current": "502",
+                                "previous": "497"
+                            }, {
+                                "name": "C: Space GB",
+                                "current": "53",
+                                "previous": "52"
+                            }, {
+                                "name": "D: Space GB",
+                                "current": "105",
+                                "previous": "101"
+                            }]
+                        }, {
+                            "name": "BI-MA-QA-ZA-3",
+                            "ip": "124.124.124.124",
+                            "geography": "Boston, MA",
+                            "figures": [{
+                                "name": "CPU %",
+                                "current": "41",
+                                "previous": "32"
+                            }, {
+                                "name": "Mem MB",
+                                "current": "1502",
+                                "previous": "1497"
+                            }, {
+                                "name": "C: Space GB",
+                                "current": "43",
+                                "previous": "42"
+                            }, {
+                                "name": "D: Space GB",
+                                "current": "145",
+                                "previous": "141"
+                            }]
+                        }]
+                    }, {
+                        "name": "USA West QA",
+                        "location": "Los Angeles NTT QA[26]",
+                        "active": true,
+                        "schedulers": [{
+                            "name": "CO-ENG-QA-AB-01",
+                            "ip": "125.125.125.125",
+                            "geography": "Newark, NJ",
+                            "figures": [{
+                                "name": "CPU %",
+                                "current": "91",
+                                "previous": "92"
+                            }, {
+                                "name": "Mem MB",
+                                "current": "502",
+                                "previous": "497"
+                            }, {
+                                "name": "C: Space GB",
+                                "current": "53",
+                                "previous": "52"
+                            }, {
+                                "name": "D: Space GB",
+                                "current": "105",
+                                "previous": "101"
+                            }]
+                        }, {
+                            "name": "BI-MA-QA-ZA-3",
+                            "ip": "126.126.126.126",
+                            "geography": "Boston, MA",
+                            "figures": [{
+                                "name": "CPU %",
+                                "current": "31",
+                                "previous": "22"
+                            }, {
+                                "name": "Mem MB",
+                                "current": "1102",
+                                "previous": "1397"
+                            }, {
+                                "name": "C: Space GB",
+                                "current": "78",
+                                "previous": "82"
+                            }, {
+                                "name": "D: Space GB",
+                                "current": "1495",
+                                "previous": "1491"
+                            }]
+                        }]
+                    }];
+                    $scope.myWelcome = values;
+                    // $scope.myWelcome = response.data;
+
+                    //response.data.substring(0,100);
+                });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </body>
+
 </html>
