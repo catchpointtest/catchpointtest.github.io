@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Insights</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,6 +13,11 @@
 <center>
 	<div ng-app="myApp" ng-controller="myCtrl"> 
 		<h1>{{myWelcome}}</h1>
+
+	<div ng-repeat="n in myWelcome">
+	  do something
+	</div>
+
 	</div>
 <div class="container" style="display: table-row; border-spacing:2em;">
   <h2>Insights</h2>
@@ -21,7 +26,7 @@
       <div class="panel-heading">Panel with panel-default class</div>
       <div class="panel-body">
     	<div class="panel panel-success">
-      	<div class="panel-heading">Panel with panel-success class</div>
+      	<div class="panel-heading" data-toggle="tooltip" data-placement="top" title="Hooray!">Panel with panel-success class</div>
       	<div class="panel-body">Panel Content</div>
     	</div>
       </div>
@@ -40,7 +45,7 @@
     <div class="panel panel-primary" style="display: table-cell;">
       <div class="panel-heading">Panel with panel-success class</div>
       <div class="panel-body">
-    	<div class="panel panel-success">
+    	<div class="panel panel-danger">
       	<div class="panel-heading">Panel with panel-success class</div>
       	<div class="panel-body">Panel Content</div>
       	</div>
@@ -84,8 +89,25 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
   $http.get("https://code.jquery.com/jquery-1.10.2.js")
   .then(function(response) {
-      $scope.myWelcome = response.data.substring(0,100);
+      var values = [
+    {
+        "name":"Thomas",
+        "password":"thomas"
+    },
+    { 
+        "name":"linda",
+        "password":"linda"
+    }];
+
+      $scope.myWelcome = values;
+
+      //response.data.substring(0,100);
   });
+});
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
 </body>
