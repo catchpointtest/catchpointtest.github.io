@@ -13,11 +13,12 @@
 
 <body>
     <center>
+
         <div ng-app="myApp" ng-controller="myCtrl">
             <div class="container" style="display: table-row; border-spacing:2em;">
                 <h2>Insights</h2>
                 <div class="panel-group">
-                    <div ng-repeat="n in myWelcome" style="display: table-cell;">
+                    <div ng-repeat="n in myWelcome" style={{myMobile}}>
                         <div class="panel panel-primary" style="border-spacing:5px;">
                             <div class="panel-heading">{{n.name}}</div>
                             <div class="panel-body" style="padding: 5px;">
@@ -57,12 +58,16 @@
                 </div>
             </div>
         </div>
-
     </center>
 
     <script>
         var app = angular.module('myApp', []);
         app.controller('myCtrl', function($scope, $http) {
+        	if(window.innerWidth <= 800 && window.innerHeight <= 900) {
+        		$scope.myMobile = "";
+        	} else {
+        		$scope.myMobile = "display:table-cell;";
+        	}
             var values = [{
                 "name": "USA East QA",
                 "location": "Las Vagas - Level 3 QA[1]",
@@ -159,108 +164,108 @@
                 }]
             }];
             $scope.myWelcome = values;
-            $http.get("http://192.168.1.188:1337/users")
-                .then(function(response) {
-                    var values = [{
-                        "name": "USA East QA",
-                        "location": "Las Vagas - Level 3 QA[1]",
-                        "active": true,
-                        "schedulers": [{
-                            "name": "NJ-NEW-QA-CO-03",
-                            "ip": "123.123.123.123",
-                            "geography": "Newark, NJ",
-                            "figures": [{
-                                "name": "CPU %",
-                                "current": "91",
-                                "previous": "92"
-                            }, {
-                                "name": "Mem MB",
-                                "current": "502",
-                                "previous": "497"
-                            }, {
-                                "name": "C: Space GB",
-                                "current": "53",
-                                "previous": "52"
-                            }, {
-                                "name": "D: Space GB",
-                                "current": "105",
-                                "previous": "101"
-                            }]
-                        }, {
-                            "name": "BI-MA-QA-ZA-3",
-                            "ip": "124.124.124.124",
-                            "geography": "Boston, MA",
-                            "figures": [{
-                                "name": "CPU %",
-                                "current": "41",
-                                "previous": "32"
-                            }, {
-                                "name": "Mem MB",
-                                "current": "1502",
-                                "previous": "1497"
-                            }, {
-                                "name": "C: Space GB",
-                                "current": "43",
-                                "previous": "42"
-                            }, {
-                                "name": "D: Space GB",
-                                "current": "145",
-                                "previous": "141"
-                            }]
-                        }]
-                    }, {
-                        "name": "USA West QA",
-                        "location": "Los Angeles NTT QA[26]",
-                        "active": true,
-                        "schedulers": [{
-                            "name": "CO-ENG-QA-AB-01",
-                            "ip": "125.125.125.125",
-                            "geography": "Newark, NJ",
-                            "figures": [{
-                                "name": "CPU %",
-                                "current": "91",
-                                "previous": "92"
-                            }, {
-                                "name": "Mem MB",
-                                "current": "502",
-                                "previous": "497"
-                            }, {
-                                "name": "C: Space GB",
-                                "current": "53",
-                                "previous": "52"
-                            }, {
-                                "name": "D: Space GB",
-                                "current": "105",
-                                "previous": "101"
-                            }]
-                        }, {
-                            "name": "BI-MA-QA-ZA-3",
-                            "ip": "126.126.126.126",
-                            "geography": "Boston, MA",
-                            "figures": [{
-                                "name": "CPU %",
-                                "current": "31",
-                                "previous": "22"
-                            }, {
-                                "name": "Mem MB",
-                                "current": "1102",
-                                "previous": "1397"
-                            }, {
-                                "name": "C: Space GB",
-                                "current": "78",
-                                "previous": "82"
-                            }, {
-                                "name": "D: Space GB",
-                                "current": "1495",
-                                "previous": "1491"
-                            }]
-                        }]
-                    }];
-                    $scope.myWelcome = values;
+            // $http.get("http://192.168.1.188:1337/users")
+            //     .then(function(response) {
+            //         var values = [{
+            //             "name": "USA East QA",
+            //             "location": "Las Vagas - Level 3 QA[1]",
+            //             "active": true,
+            //             "schedulers": [{
+            //                 "name": "NJ-NEW-QA-CO-03",
+            //                 "ip": "123.123.123.123",
+            //                 "geography": "Newark, NJ",
+            //                 "figures": [{
+            //                     "name": "CPU %",
+            //                     "current": "91",
+            //                     "previous": "92"
+            //                 }, {
+            //                     "name": "Mem MB",
+            //                     "current": "502",
+            //                     "previous": "497"
+            //                 }, {
+            //                     "name": "C: Space GB",
+            //                     "current": "53",
+            //                     "previous": "52"
+            //                 }, {
+            //                     "name": "D: Space GB",
+            //                     "current": "105",
+            //                     "previous": "101"
+            //                 }]
+            //             }, {
+            //                 "name": "BI-MA-QA-ZA-3",
+            //                 "ip": "124.124.124.124",
+            //                 "geography": "Boston, MA",
+            //                 "figures": [{
+            //                     "name": "CPU %",
+            //                     "current": "41",
+            //                     "previous": "32"
+            //                 }, {
+            //                     "name": "Mem MB",
+            //                     "current": "1502",
+            //                     "previous": "1497"
+            //                 }, {
+            //                     "name": "C: Space GB",
+            //                     "current": "43",
+            //                     "previous": "42"
+            //                 }, {
+            //                     "name": "D: Space GB",
+            //                     "current": "145",
+            //                     "previous": "141"
+            //                 }]
+            //             }]
+            //         }, {
+            //             "name": "USA West QA",
+            //             "location": "Los Angeles NTT QA[26]",
+            //             "active": true,
+            //             "schedulers": [{
+            //                 "name": "CO-ENG-QA-AB-01",
+            //                 "ip": "125.125.125.125",
+            //                 "geography": "Newark, NJ",
+            //                 "figures": [{
+            //                     "name": "CPU %",
+            //                     "current": "91",
+            //                     "previous": "92"
+            //                 }, {
+            //                     "name": "Mem MB",
+            //                     "current": "502",
+            //                     "previous": "497"
+            //                 }, {
+            //                     "name": "C: Space GB",
+            //                     "current": "53",
+            //                     "previous": "52"
+            //                 }, {
+            //                     "name": "D: Space GB",
+            //                     "current": "105",
+            //                     "previous": "101"
+            //                 }]
+            //             }, {
+            //                 "name": "BI-MA-QA-ZA-3",
+            //                 "ip": "126.126.126.126",
+            //                 "geography": "Boston, MA",
+            //                 "figures": [{
+            //                     "name": "CPU %",
+            //                     "current": "31",
+            //                     "previous": "22"
+            //                 }, {
+            //                     "name": "Mem MB",
+            //                     "current": "1102",
+            //                     "previous": "1397"
+            //                 }, {
+            //                     "name": "C: Space GB",
+            //                     "current": "78",
+            //                     "previous": "82"
+            //                 }, {
+            //                     "name": "D: Space GB",
+            //                     "current": "1495",
+            //                     "previous": "1491"
+            //                 }]
+            //             }]
+            //         }];
+            //         $scope.myWelcome = values;
                     // $scope.myWelcome = response.data;
 
                     //response.data.substring(0,100);
-                });
+                // });
         });
     </script>
     <script>
