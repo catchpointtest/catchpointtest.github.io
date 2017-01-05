@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Insights</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,15 +17,16 @@
         <div ng-app="myApp" ng-controller="myCtrl">
             <div class="container" style="display: table-row; border-spacing:2em;">
                 <h2>Insights</h2>
+                {{myWelcome}}
                 <div class="panel-group">
                     <div ng-repeat="n in myWelcome" style={{myMobile}}>
                         <div class="panel panel-primary" style="border-spacing:5px;">
-                            <div class="panel-heading">{{n.name}}</div>
+                            <div class="panel-heading"><b>{{n.name}}</b>
+                            </div>
                             <div class="panel-body" style="padding: 5px;">
                                 <div ng-repeat="o in n.schedulers" style="padding: 5px;">
-                                    <div class="panel panel-success">
-
-                                        <div class="panel-heading" data-toggle="tooltip" data-placement="top" title="Hooray!">{{o.name}}</div>
+                                    <div ng-attr-class="{{o.messages[0].serverity == 'Fatal' || o.messages[0].serverity == 'Error'? 'panel panel-danger' : o.messages[0].serverity == 'Info' ? 'panel panel-info' : o.messages[0].serverity == 'Warn' ? 'panel panel-warning' :'panel panel-success'}}">
+                                        <div class="panel-heading" data-toggle="tooltip" data-placement="top" title={{o.messages[0].text}}>{{o.name}}</div>
                                         <div class="panel-body">
                                             <table style="border:none;border-collapse: separate; border-spacing: 10px 0;">
                                                 <tr>
@@ -39,7 +40,7 @@
                                                 <tr ng-repeat="p in o.figures">
                                                     <th>{{p.name}}</th>
                                                     <td>{{p.current}}</td>
-                                                    <td>{{p.previous}}</td>
+                                                    <td ng-attr-style="{{p.previous >= p.current ? 'color:red' : 'color:green'}}">{{p.previous}}</td>
                                                 </tr>
                                             </table>
 
@@ -49,11 +50,6 @@
 
                             </div>
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -64,208 +60,20 @@
         var app = angular.module('myApp', []);
         app.controller('myCtrl', function($scope, $http) {
         	if(window.innerWidth <= 800 && window.innerHeight <= 900) {
-        		$scope.myMobile = "";
+        		$scope.myMobile = "padding-bottom:10px;";
         	} else {
         		$scope.myMobile = "display:table-cell;";
         	}
-            var values = [{
-                "name": "USA East QA",
-                "location": "Las Vagas - Level 3 QA[1]",
-                "active": true,
-                "schedulers": [{
-                    "name": "NJ-NEW-QA-CO-03",
-                    "ip": "123.123.123.123",
-                    "geography": "Newark, NJ",
-                    "figures": [{
-                        "name": "CPU %",
-                        "current": "91",
-                        "previous": "92"
-                    }, {
-                        "name": "Mem MB",
-                        "current": "502",
-                        "previous": "497"
-                    }, {
-                        "name": "C: Space GB",
-                        "current": "53",
-                        "previous": "52"
-                    }, {
-                        "name": "D: Space GB",
-                        "current": "105",
-                        "previous": "101"
-                    }]
-                }, {
-                    "name": "BI-MA-QA-ZA-3",
-                    "ip": "124.124.124.124",
-                    "geography": "Boston, MA",
-                    "figures": [{
-                        "name": "CPU %",
-                        "current": "41",
-                        "previous": "32"
-                    }, {
-                        "name": "Mem MB",
-                        "current": "1502",
-                        "previous": "1497"
-                    }, {
-                        "name": "C: Space GB",
-                        "current": "43",
-                        "previous": "42"
-                    }, {
-                        "name": "D: Space GB",
-                        "current": "145",
-                        "previous": "141"
-                    }]
-                }]
-            }, {
-                "name": "USA West QA",
-                "location": "Los Angeles NTT QA[26]",
-                "active": true,
-                "schedulers": [{
-                    "name": "CO-ENG-QA-AB-01",
-                    "ip": "125.125.125.125",
-                    "geography": "Newark, NJ",
-                    "figures": [{
-                        "name": "CPU %",
-                        "current": "91",
-                        "previous": "92"
-                    }, {
-                        "name": "Mem MB",
-                        "current": "502",
-                        "previous": "497"
-                    }, {
-                        "name": "C: Space GB",
-                        "current": "53",
-                        "previous": "52"
-                    }, {
-                        "name": "D: Space GB",
-                        "current": "105",
-                        "previous": "101"
-                    }]
-                }, {
-                    "name": "BI-MA-QA-ZA-3",
-                    "ip": "126.126.126.126",
-                    "geography": "Boston, MA",
-                    "figures": [{
-                        "name": "CPU %",
-                        "current": "31",
-                        "previous": "22"
-                    }, {
-                        "name": "Mem MB",
-                        "current": "1102",
-                        "previous": "1397"
-                    }, {
-                        "name": "C: Space GB",
-                        "current": "78",
-                        "previous": "82"
-                    }, {
-                        "name": "D: Space GB",
-                        "current": "1495",
-                        "previous": "1491"
-                    }]
-                }]
-            }];
+            var values = [ { "name": "USA East QA", "location": "Las Vagas - Level 3 QA[1]", "active": true, "schedulers": [ { "name": "NJ-NEW-QA-CO-03", "ip": "123.123.123.123", "geography": "Newark, NJ", "figures": [ { "name": "CPU %", "current": "91", "previous": "92" }, { "name": "Mem MB", "current": "502", "previous": "497" }, { "name": "C: Space GB", "current": "53", "previous": "52" }, { "name": "D: Space GB", "current": "105", "previous": "101" } ] }, { "name": "BI-MA-QA-ZA-3", "ip": "124.124.124.124", "geography": "Boston, MA", "figures": [ { "name": "CPU %", "current": "41", "previous": "32" }, { "name": "Mem MB", "current": "1502", "previous": "1497" }, { "name": "C: Space GB", "current": "43", "previous": "42" }, { "name": "D: Space GB", "current": "145", "previous": "141" } ], "messages": [ { "serverity": "Error", "text": "Hawk Schedule Server is not running" } ] } ] }, { "name": "USA West QA", "location": "Los Angeles NTT QA[26]", "active": true, "schedulers": [ { "name": "CO-ENG-QA-AB-01", "ip": "125.125.125.125", "geography": "Newark, NJ", "figures": [ { "name": "CPU %", "current": "91", "previous": "92" }, { "name": "Mem MB", "current": "502", "previous": "497" }, { "name": "C: Space GB", "current": "53", "previous": "52" }, { "name": "D: Space GB", "current": "105", "previous": "101" } ], "messages": [ { "serverity": "Info", "text": "CPU usage is low" }, { "serverity": "Warn", "text": "Disk space utilization is high" } ] }, { "name": "BI-MA-QA-ZA-3", "ip": "126.126.126.126", "geography": "Boston, MA", "figures": [ { "name": "CPU %", "current": "31", "previous": "22" }, { "name": "Mem MB", "current": "1102", "previous": "1397" }, { "name": "C: Space GB", "current": "78", "previous": "82" }, { "name": "D: Space GB", "current": "1495", "previous": "1491" } ], "messages": [ { "serverity": "Fatal", "text": "The system is about to restart" } ] } ] } ];
+          
             $scope.myWelcome = values;
-            // $http.get("http://192.168.1.188:1337/users")
-            //     .then(function(response) {
-            //         var values = [{
-            //             "name": "USA East QA",
-            //             "location": "Las Vagas - Level 3 QA[1]",
-            //             "active": true,
-            //             "schedulers": [{
-            //                 "name": "NJ-NEW-QA-CO-03",
-            //                 "ip": "123.123.123.123",
-            //                 "geography": "Newark, NJ",
-            //                 "figures": [{
-            //                     "name": "CPU %",
-            //                     "current": "91",
-            //                     "previous": "92"
-            //                 }, {
-            //                     "name": "Mem MB",
-            //                     "current": "502",
-            //                     "previous": "497"
-            //                 }, {
-            //                     "name": "C: Space GB",
-            //                     "current": "53",
-            //                     "previous": "52"
-            //                 }, {
-            //                     "name": "D: Space GB",
-            //                     "current": "105",
-            //                     "previous": "101"
-            //                 }]
-            //             }, {
-            //                 "name": "BI-MA-QA-ZA-3",
-            //                 "ip": "124.124.124.124",
-            //                 "geography": "Boston, MA",
-            //                 "figures": [{
-            //                     "name": "CPU %",
-            //                     "current": "41",
-            //                     "previous": "32"
-            //                 }, {
-            //                     "name": "Mem MB",
-            //                     "current": "1502",
-            //                     "previous": "1497"
-            //                 }, {
-            //                     "name": "C: Space GB",
-            //                     "current": "43",
-            //                     "previous": "42"
-            //                 }, {
-            //                     "name": "D: Space GB",
-            //                     "current": "145",
-            //                     "previous": "141"
-            //                 }]
-            //             }]
-            //         }, {
-            //             "name": "USA West QA",
-            //             "location": "Los Angeles NTT QA[26]",
-            //             "active": true,
-            //             "schedulers": [{
-            //                 "name": "CO-ENG-QA-AB-01",
-            //                 "ip": "125.125.125.125",
-            //                 "geography": "Newark, NJ",
-            //                 "figures": [{
-            //                     "name": "CPU %",
-            //                     "current": "91",
-            //                     "previous": "92"
-            //                 }, {
-            //                     "name": "Mem MB",
-            //                     "current": "502",
-            //                     "previous": "497"
-            //                 }, {
-            //                     "name": "C: Space GB",
-            //                     "current": "53",
-            //                     "previous": "52"
-            //                 }, {
-            //                     "name": "D: Space GB",
-            //                     "current": "105",
-            //                     "previous": "101"
-            //                 }]
-            //             }, {
-            //                 "name": "BI-MA-QA-ZA-3",
-            //                 "ip": "126.126.126.126",
-            //                 "geography": "Boston, MA",
-            //                 "figures": [{
-            //                     "name": "CPU %",
-            //                     "current": "31",
-            //                     "previous": "22"
-            //                 }, {
-            //                     "name": "Mem MB",
-            //                     "current": "1102",
-            //                     "previous": "1397"
-            //                 }, {
-            //                     "name": "C: Space GB",
-            //                     "current": "78",
-            //                     "previous": "82"
-            //                 }, {
-            //                     "name": "D: Space GB",
-            //                     "current": "1495",
-            //                     "previous": "1491"
-            //                 }]
-            //             }]
-            //         }];
-            //         $scope.myWelcome = values;
-                    // $scope.myWelcome = response.data;
+            $http.get("http://192.168.1.188:1337/users")
+                .then(function(response) {
+                   
+                    
+                    // $scope.myWelcome = JSON.parse(response.data.replace(/'/g,"\"").substring(1,response.data.replace(/'/g,"\"").length));
 
-                    //response.data.substring(0,100);
-                // });
+                });
         });
     </script>
     <script>
